@@ -1,6 +1,5 @@
-# Frontend Automation Framework for Kriya Software 
+# Frontend Automation Framework for Craigslist 
 
-Please contact me on mr.manish22d@gmail.com / 7507253075
 
 This project intended to Automate Testing of different ecommerce websites of india. 
 This is Java based Selenium project. It follows PAge Object modal design pattern. TestNG is used as test framework.
@@ -30,7 +29,7 @@ This is Java based Selenium project. It follows PAge Object modal design pattern
 
 ### Running using maven command
  * we can use below maven command to run test either via command prompt or pipeline.
-      * ```mvn clean test -PscheduleClassTest```
+      * ```mvn clean test -PCraigslistTest```
    
 ## How do I know if Test is passed? 
  * Option 1 : In Console Failures should be zero

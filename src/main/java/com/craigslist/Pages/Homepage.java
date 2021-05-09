@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.craigslist.BaseClass.TestBase;
+import com.craigslist.Constants.Constants;
 
 public class Homepage extends TestBase {
 
@@ -22,13 +23,13 @@ public class Homepage extends TestBase {
 	}
 
 	public void changeLanguage(String language) {
-		new WebDriverWait(driver, 15).until(ExpectedConditions.elementToBeClickable(lang));
+		new WebDriverWait(driver, Constants.EXPLICIT_WAIT).until(ExpectedConditions.elementToBeClickable(lang));
 		Select langDropdown = new Select(lang);
 		langDropdown.selectByVisibleText(language.toLowerCase());
 	}
 
 	public HousingPage navigateToHousing() {
-		new WebDriverWait(driver, 15).until(ExpectedConditions.elementToBeClickable(housing));
+		new WebDriverWait(driver, Constants.EXPLICIT_WAIT).until(ExpectedConditions.elementToBeClickable(housing));
 		housing.click();
 		return new HousingPage();
 	}

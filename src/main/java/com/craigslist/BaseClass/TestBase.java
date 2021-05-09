@@ -35,12 +35,12 @@ public class TestBase {
 	public static ChromeOptions chromeOptions;
 	public static EventFiringWebDriver e_driver;
 	public static WebEventListener eventListener;
-	public static Logger Log;
+	public static Logger log;
 	public static ExtentReports extent;
 	public static ExtentTest extentTest;
 
 	public TestBase() {
-		Log = Logger.getLogger(this.getClass());
+		log = Logger.getLogger(this.getClass());
 		try {
 			property = new Properties();
 			FileInputStream inputStream = new FileInputStream(
@@ -59,8 +59,8 @@ public class TestBase {
 
 		extent = new ExtentReports(
 				System.getProperty("user.dir") + "/AutomationReport/" + TestUtility.getSystemDate() + ".html");
-		extent.addSystemInfo("Host Name", "Manish Windows System");
-		extent.addSystemInfo("User Name", "Manish");
+		extent.addSystemInfo("Host Name", "Windows System");
+		extent.addSystemInfo("User Name", "user");
 		extent.addSystemInfo("Environment", "Automation Test Report");
 
 	}
@@ -114,8 +114,8 @@ public class TestBase {
 	@AfterMethod(alwaysRun = true)
 	public void tearDown(ITestResult result) throws IOException {
 		System.out.println(result);
-		Log.info("Browser Terminated");
-		Log.info("-----------------------------------------------");
+		log.info("Browser Terminated");
+		log.info("-----------------------------------------------");
 		if (result.getStatus() == ITestResult.FAILURE) {
 			extentTest.log(LogStatus.FAIL, "Test Case Failed is " + result.getName()); // To Add Name in Extent Report.
 			extentTest.log(LogStatus.FAIL, "Test Case Failed is " + result.getThrowable()); // To Add Errors and
@@ -134,7 +134,7 @@ public class TestBase {
 			e.printStackTrace();
 		}
 		
-		Log.info("Browser Terminated");
-		Log.info("-----------------------------------------------");
+		log.info("Browser Terminated");
+		log.info("-----------------------------------------------");
 	}
 }

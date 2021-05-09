@@ -2,6 +2,8 @@ package com.craigslist.TestCases;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
 
 import java.lang.reflect.Method;
 import java.util.Comparator;
@@ -28,8 +30,8 @@ public class CraigslistTest extends TestBase {
 	public void setUp() {
 		testUtil = new TestUtility();
 		initialization();
-		Log.info("Application Launched Successfully");
-		driver.get(property.getProperty("URL"));
+		log.info("Application Launched Successfully");
+//		driver.get(property.getProperty("URL"));
 		homepage = new Homepage();
 		homepage.changeLanguage("english");
 		housingPage = homepage.navigateToHousing();
@@ -52,7 +54,8 @@ public class CraigslistTest extends TestBase {
 		System.out.println(Ordering.natural().reverse().isOrdered(actualPrice));
 		System.out.println(Comparators.isInOrder(actualPrice, Comparator.naturalOrder()));
 		System.out.println(Comparators.isInOrder(actualPrice, Comparator.reverseOrder()));
-//		assertThat("Given List is not in ascending order ", Comparators.isInOrder(actualPrice, Comparator.reverseOrder()));
+		assertThat("Given List is not in ascending order ", Comparators.isInOrder(actualPrice, Comparator.reverseOrder()));
+//		assertThat("expect", is(equalTo("actual")));
 	}
 	
 	@Test(priority = 1, enabled = true)

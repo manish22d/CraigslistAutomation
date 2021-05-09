@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.craigslist.BaseClass.TestBase;
+import com.craigslist.Constants.Constants;
 
 public class HousingPage extends TestBase {
 
@@ -28,7 +29,7 @@ public class HousingPage extends TestBase {
 	}
 
 	public void setOrder(String order) {
-		new WebDriverWait(driver, 15).until(ExpectedConditions.elementToBeClickable(sortingDropdown));
+		new WebDriverWait(driver, Constants.EXPLICIT_WAIT).until(ExpectedConditions.elementToBeClickable(sortingDropdown));
 		sortingDropdown.click();
 		driver.findElement(By.linkText(order)).click();
 	}
@@ -36,6 +37,6 @@ public class HousingPage extends TestBase {
 	public List<Float> getListOfPrice() {
 		new WebDriverWait(driver, 15).until(ExpectedConditions.elementToBeClickable(prices.get(0)));
 		return prices.stream().map(price -> Float.parseFloat(price.getText().trim().replace("€", "")))
-				.collect(Collectors.toList()).subList(1, 3);
+				.collect(Collectors.toList());
 	}
 }
